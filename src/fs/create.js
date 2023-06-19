@@ -6,16 +6,16 @@ const create = async () => {
     access(filePath, constants.F_OK, (err) => {
         if (!err) {
             throw new Error('FS operation failed');
+        } else {
+            const content = 'I am fresh and young';
+            writeFile(filePath, content, (err) => {
+                if (err) {
+                    throw new Error(err);
+                }
+            });
         }
     });
-
-    const content = 'I am fresh and young';
-
-    writeFile(filePath, content, (err) => {
-        if (err) {
-            throw new Error(err);
-        }
-    });
+    
 };
 
 await create();
