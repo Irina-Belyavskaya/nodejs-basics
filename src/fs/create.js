@@ -1,5 +1,21 @@
+import { access, constants, writeFile } from 'node:fs';
+
 const create = async () => {
-    // Write your code here 
+    const filePath = `${process.cwd()}\\files\\fresh.txt`;
+
+    access(filePath, constants.F_OK, (err) => {
+        if (!err) {
+            throw new Error('FS operation failed');
+        }
+    });
+
+    const content = 'I am fresh and young';
+
+    writeFile(filePath, content, (err) => {
+        if (err) {
+            throw new Error(err);
+        }
+    });
 };
 
 await create();
