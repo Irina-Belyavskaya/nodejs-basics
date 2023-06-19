@@ -1,7 +1,8 @@
 import { access, constants, writeFile } from 'node:fs';
+import path from 'path';
 
 const create = async () => {
-    const filePath = `${process.cwd()}\\files\\fresh.txt`;
+    const filePath = path.resolve('files', 'fresh.txt');
 
     access(filePath, constants.F_OK, (err) => {
         if (!err) {
@@ -14,8 +15,7 @@ const create = async () => {
                 }
             });
         }
-    });
-    
+    });    
 };
 
 await create();
