@@ -15,8 +15,7 @@ const copy = async () => {
                     mkdirSync(newFolderName);
                     readdir(folderName, (err, list) => {
                         if (err) {
-                          callback(err);
-                          return;
+                            throw new Error(err);
                         }
                         list.forEach((item) => {
                             const src = path.resolve(folderName, item);
